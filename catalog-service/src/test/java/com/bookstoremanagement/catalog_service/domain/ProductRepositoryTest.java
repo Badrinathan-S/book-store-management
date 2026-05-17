@@ -1,26 +1,22 @@
 package com.bookstoremanagement.catalog_service.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.math.BigDecimal;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import java.math.BigDecimal;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
 @DataJpaTest(
-        properties = {
-                "spring.tet.database.replace=none",
-                "spring.datasource.url=jdbc:tc:postgresl:1-alpine:///db",
-        })
+        properties = {"spring.test.database.replace=none", "spring.datasource.url=jdbc:tc:postgresql:16-alpine:///db"})
 class ProductRepositoryTest {
 
     @Autowired
     private ProductRepository productRepository;
 
     @Test
-    void shouldGetAllProducts(){
+    void shouldGetAllProducts() {
         List<ProductEntity> product = productRepository.findAll();
         assertThat(product).hasSize(30);
     }
@@ -35,8 +31,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    void shouldReturnEmptyWhenProductCodeNotExists(){
+    void shouldReturnEmptyWhenProductCodeNotExists() {
         assertThat(productRepository.findByCode("invalid_product_code")).isEmpty();
     }
-
 }

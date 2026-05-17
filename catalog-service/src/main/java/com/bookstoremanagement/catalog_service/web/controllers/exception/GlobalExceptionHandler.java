@@ -1,16 +1,12 @@
 package com.bookstoremanagement.catalog_service.web.controllers.exception;
 
-
-import com.bookstoremanagement.catalog_service.domain.Product;
 import com.bookstoremanagement.catalog_service.domain.ProductNotFoundException;
+import java.net.URI;
+import java.time.Instant;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import java.net.URI;
-import java.time.Instant;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -20,8 +16,9 @@ public class GlobalExceptionHandler {
     private static final String SERVICE_NAME = "catalog-service";
 
     @ExceptionHandler(Exception.class)
-    ProblemDetail handleUnhandledException(Exception e){
-        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+    ProblemDetail handleUnhandledException(Exception e) {
+        ProblemDetail problemDetail =
+                ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         problemDetail.setTitle("Internal Server Error");
         problemDetail.setType(ISE_FOUND_TYPE);
         problemDetail.setProperty("service", SERVICE_NAME);

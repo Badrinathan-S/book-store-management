@@ -1,17 +1,16 @@
 package com.bookstoremanagement.catalog_service.web.controllers;
 
-import com.bookstoremanagement.catalog_service.AbstractIT;
-import com.bookstoremanagement.catalog_service.domain.Product;
-import io.restassured.http.ContentType;
-import org.junit.jupiter.api.Test;
-import org.springframework.test.context.jdbc.Sql;
-
-import java.math.BigDecimal;
-
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
+
+import com.bookstoremanagement.catalog_service.AbstractIT;
+import com.bookstoremanagement.catalog_service.domain.Product;
+import io.restassured.http.ContentType;
+import java.math.BigDecimal;
+import org.junit.jupiter.api.Test;
+import org.springframework.test.context.jdbc.Sql;
 
 @Sql("/test-data.sql")
 class ProductControllerTest extends AbstractIT {
@@ -35,8 +34,7 @@ class ProductControllerTest extends AbstractIT {
     void shouldGetProductByCode() {
         Product product = given().contentType(ContentType.JSON)
                 .when()
-                .get("/api/products" +
-                        "/{code}", "P100")
+                .get("/api/products" + "/{code}", "P100")
                 .then()
                 .statusCode(200)
                 .assertThat()
@@ -60,7 +58,6 @@ class ProductControllerTest extends AbstractIT {
                 .statusCode(404)
                 .body("status", is(404))
                 .body("title", is("Product Not Found"))
-                .body("detail", is("Product with code "+code+ " not found"));
+                .body("detail", is("Product with code " + code + " not found"));
     }
-
 }
