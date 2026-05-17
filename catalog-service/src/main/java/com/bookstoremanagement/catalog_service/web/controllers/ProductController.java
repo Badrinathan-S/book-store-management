@@ -3,11 +3,10 @@ package com.bookstoremanagement.catalog_service.web.controllers;
 
 import com.bookstoremanagement.catalog_service.domain.PagedResult;
 import com.bookstoremanagement.catalog_service.domain.Product;
+import com.bookstoremanagement.catalog_service.domain.ProductNotFoundException;
 import com.bookstoremanagement.catalog_service.domain.ProductService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,12 +15,19 @@ import java.util.List;
 class ProductController {
     private final ProductService productService;
 
-    ProductController(ProductService productService){
+    ProductController(ProductService productService) {
         this.productService = productService;
     }
 
     @GetMapping
     PagedResult<Product> getProducts(@RequestParam(name = "page", defaultValue = "1") int pageNo) {
         return productService.getProducts(pageNo);
+    }
+
+    @GetMapping("/{code}")
+    ResponseEntity<Product> getProductByCode(@PathVariable String code){
+        return productService.getProductByCode(code)
+                .map(ResponseEntity::ok)
+                .orElseThrow(() -> ProductNotFoundException.forCode(code));
     }
 }
