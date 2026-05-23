@@ -3,7 +3,7 @@ name: Catalog service
 on:
   push:
     paths:
-      - catalog-service/**
+      - 'catalog-service/**'
     branches:
       - '**'
 
@@ -46,5 +46,5 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN}}
       - name: Build and Publish Docker Image
         run:
-          ./mvnw spring-boot:build-image -DskipTest
+          ./mvnw spring-boot:build-image -DskipTests
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/bookstore-catalog-service
