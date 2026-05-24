@@ -9,5 +9,4 @@ class ProductMapper {
                 productEntity.getImageUrl(),
                 productEntity.getPrice());
     }
-    
 }
