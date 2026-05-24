@@ -29,7 +29,7 @@
     <properties>
         <java.version>21</java.version>
         <spotless.version>2.43.0</spotless.version>
-        <dockerImageName>badrinathan/bookstore-${project.artifactId}</dockerImageName>
+        <dockerImageName>badrinathansubramani/bookstore-${project.artifactId}</dockerImageName>
     </properties>
     <dependencies>
         <dependency>
