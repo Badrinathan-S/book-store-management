@@ -1,4 +1,4 @@
-package com.bookstoremanagement.order_service;
+package com.bookstoremanagement.orders;
 
 import org.springframework.boot.SpringApplication;
 

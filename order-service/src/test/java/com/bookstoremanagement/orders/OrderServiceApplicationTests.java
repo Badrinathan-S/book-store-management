@@ -1,4 +1,4 @@
-package com.bookstoremanagement.order_service;
+package com.bookstoremanagement.orders;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,5 +9,6 @@ import org.springframework.context.annotation.Import;
 class OrderServiceApplicationTests {
 
     @Test
-    void contextLoads() {}
+    void contextLoads() {
+    }
 }
