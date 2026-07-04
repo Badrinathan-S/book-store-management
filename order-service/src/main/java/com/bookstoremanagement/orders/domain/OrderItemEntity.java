@@ -5,12 +5,12 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "orders")
+@Table(name = "order_items")
 class OrderItemEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_item_id_generator")
-    @SequenceGenerator(name = "order_id_generator", sequenceName = "order_item_id_seq")
+    @SequenceGenerator(name = "order_item_id_generator", sequenceName = "order_item_id_seq", allocationSize = 1)
     private Long id;
 
     @Column(nullable = false)

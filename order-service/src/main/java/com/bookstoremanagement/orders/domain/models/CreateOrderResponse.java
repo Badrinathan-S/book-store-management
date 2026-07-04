@@ -1,4 +1,4 @@
 package com.bookstoremanagement.orders.domain.models;
 
-public class CreateOrderResponse {
+public record CreateOrderResponse(String orderNumber) {
 }
