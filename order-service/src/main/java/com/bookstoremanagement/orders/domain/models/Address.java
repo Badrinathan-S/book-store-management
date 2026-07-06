@@ -1,73 +1,12 @@
 package com.bookstoremanagement.orders.domain.models;
 
-import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotBlank;
 
-@Embeddable
-public class Address {
-
-    @NotBlank
-    private String addressLine1;
-
-    private String addressLine2;
-
-    @NotBlank
-    private String city;
-
-    @NotBlank
-    private String state;
-
-    @NotBlank
-    private String zipCode;
-
-    @NotBlank
-    private String country;
-
-    public String getAddressLine1() {
-        return addressLine1;
-    }
-
-    public void setAddressLine1(String addressLine1) {
-        this.addressLine1 = addressLine1;
-    }
-
-    public String getAddressLine2() {
-        return addressLine2;
-    }
-
-    public void setAddressLine2(String addressLine2) {
-        this.addressLine2 = addressLine2;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
+public record Address(
+        @NotBlank(message = "AddressLine1 is required") String addressLine1,
+        String addressLine2,
+        @NotBlank(message = "City is required") String city,
+        @NotBlank(message = "State is required") String state,
+        @NotBlank(message = "ZipCode is required") String zipCode,
+        @NotBlank(message = "Country is required") String country) {
 }

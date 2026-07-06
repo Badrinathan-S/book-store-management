@@ -1,11 +1,17 @@
-package com.bookstoremanagement.orders.web.controllers;
+package com.bookstoremanagement.orders.web.controller;
 
 import com.bookstoremanagement.orders.domain.OrderService;
 import com.bookstoremanagement.orders.domain.SecurityService;
 import com.bookstoremanagement.orders.domain.models.CreateOrderRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.extension.MediaType;
+import org.springframework.http.MediaType;
+
+import static org.junit.jupiter.api.Named.named;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
+
+import static com.bookstoremanagement.orders.testdata.TestDataFactory.*;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -54,8 +60,18 @@ public class OrderControllerUnitTests {
 
     static Stream<Arguments> createOrderRequestProvider() {
         return Stream.of(
-                Arguments.arguments("Order with Invalid Customers", createOrderRequestWithInvalidCustomer())
-        )
+                arguments(
+                        named("Order with Invalid Customer",
+                                createOrderRequestWithInvalidCustomer())
+                ),
+                arguments(
+                        named("Order with Invalid Delivery Address",
+                                createOrderRequestWithInvalidDeliveryAddress())
+                ),
+                arguments(
+                        named("Order with No Items",
+                                createOrderRequestWithNoItems())
+                )
+        );
     }
-
 }

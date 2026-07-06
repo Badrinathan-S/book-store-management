@@ -1,6 +1,7 @@
-package com.bookstoremanagement.orders.web.controllers;
+package com.bookstoremanagement.orders.web.controller;
 
 import com.bookstoremanagement.orders.AbstractIT;
+import com.bookstoremanagement.orders.testdata.TestDataFactory;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
