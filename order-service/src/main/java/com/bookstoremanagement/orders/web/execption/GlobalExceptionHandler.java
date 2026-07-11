@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestControllerAdvice
 class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
-    private static final URI NOT_FOUND_TYPE = URI.create("https://api.bookstore.com/error/not-found");
+    //    private static final URI NOT_FOUND_TYPE = URI.create("https://api.bookstore.com/error/not-found");
     private static final URI ISE_FOUND_TYPE = URI.create("https://api.bookstore.com/error/server-error");
     private static final URI BAD_REQUEST_TYPE = URI.create("https://api.bookstore.com/error/bad-request");
     private static final URI SERVICE_NAME = URI.create("order-service");

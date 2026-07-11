@@ -17,8 +17,6 @@ public class ProductServiceClient {
         this.restClient = restClient;
     }
 
-    ;
-
     public Optional<Product> getProductByCode(String code) {
         log.info("Fetching product by code {}", code);
         try {
