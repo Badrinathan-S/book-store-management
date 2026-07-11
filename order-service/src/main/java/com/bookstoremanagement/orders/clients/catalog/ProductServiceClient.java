@@ -24,7 +24,7 @@ public class ProductServiceClient {
         try {
             var product = restClient
                     .get()
-                    .uri("/api/product/{code}", code)
+                    .uri("/api/products/{code}", code)
                     .retrieve()
                     .body(Product.class);
             return Optional.ofNullable(product);

@@ -1,6 +1,5 @@
 package com.bookstoremanagement.orders.web.execption;
 
-import com.bookstoremanagement.orders.domain.models.InvalidOrderException;
 import jakarta.annotation.Nullable;
 import org.springframework.http.*;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -53,14 +52,4 @@ class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(problemDetail);
     }
 
-    @ExceptionHandler(InvalidOrderException.class)
-    ProblemDetail handleInvalidOrderException(InvalidOrderException e) {
-        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage());
-        problemDetail.setTitle("Invalid Order Creation Request");
-        problemDetail.setType(BAD_REQUEST_TYPE);
-        problemDetail.setProperty("service", SERVICE_NAME);
-        problemDetail.setProperty("error_category", "Generic");
-        problemDetail.setProperty("timestamp", Instant.now());
-        return problemDetail;
-    }
 }
