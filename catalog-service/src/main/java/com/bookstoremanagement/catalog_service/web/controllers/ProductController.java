@@ -21,17 +21,8 @@ class ProductController {
         return productService.getProducts(pageNo);
     }
 
-    void sleep() {
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     @GetMapping("/{code}")
     ResponseEntity<Product> getProductByCode(@PathVariable String code) {
-        sleep();
         return productService
                 .getProductByCode(code)
                 .map(ResponseEntity::ok)
