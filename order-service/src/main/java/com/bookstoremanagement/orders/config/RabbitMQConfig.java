@@ -2,12 +2,10 @@ package com.bookstoremanagement.orders.config;
 
 import com.bookstoremanagement.orders.ApplicationProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rabbitmq.client.AMQP;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,18 +15,6 @@ class RabbitMQConfig {
 
     RabbitMQConfig(ApplicationProperties properties) {
         this.properties = properties;
-    }
-
-    @Bean
-    ApplicationRunner testRabbit(RabbitTemplate rabbitTemplate) {
-        return args -> {
-            rabbitTemplate.convertAndSend(
-                    "orders-exchange",
-                    "new-orders",
-                    "Hello RabbitMQ"
-            );
-            System.out.println("Message sent successfully!");
-        };
     }
 
     @Bean

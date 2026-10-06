@@ -7,12 +7,19 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "order events")
+@Table(name = "order_events")
 public class OrderEventEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_event_id_generators")
-    @SequenceGenerator(name = "order_event_id_generator", sequenceName = "order_event_id_sequence")
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "order_event_id_generator"
+    )
+    @SequenceGenerator(
+            name = "order_event_id_generator",
+            sequenceName = "order_event_id_seq",
+            allocationSize = 50
+    )
     private Long id;
 
     @Column(nullable = false)
