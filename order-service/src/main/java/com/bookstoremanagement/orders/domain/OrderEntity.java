@@ -4,7 +4,6 @@ import com.bookstoremanagement.orders.domain.models.Address;
 import com.bookstoremanagement.orders.domain.models.Customer;
 import com.bookstoremanagement.orders.domain.models.OrderStatus;
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -14,11 +13,7 @@ public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_id_generator")
-    @SequenceGenerator(
-            name = "order_id_generator",
-            sequenceName = "order_id_seq",
-            allocationSize = 50
-    )
+    @SequenceGenerator(name = "order_id_generator", sequenceName = "order_id_seq", allocationSize = 50)
     private Long id;
 
     @Column(nullable = false)
@@ -27,56 +22,25 @@ public class OrderEntity {
     @Column(name = "username", nullable = false)
     private String userName;
 
-    @OneToMany(
-            mappedBy = "order",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<OrderItemEntity> items;
 
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride(
-                    name = "name",
-                    column = @Column(name = "customer_name")
-            ),
-            @AttributeOverride(
-                    name = "email",
-                    column = @Column(name = "customer_email")
-            ),
-            @AttributeOverride(
-                    name = "phone",
-                    column = @Column(name = "customer_phone")
-            )
+        @AttributeOverride(name = "name", column = @Column(name = "customer_name")),
+        @AttributeOverride(name = "email", column = @Column(name = "customer_email")),
+        @AttributeOverride(name = "phone", column = @Column(name = "customer_phone"))
     })
     private Customer customer;
 
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride(
-                    name = "addressLine1",
-                    column = @Column(name = "delivery_address_line1")
-            ),
-            @AttributeOverride(
-                    name = "addressLine2",
-                    column = @Column(name = "delivery_address_line2")
-            ),
-            @AttributeOverride(
-                    name = "city",
-                    column = @Column(name = "delivery_address_city")
-            ),
-            @AttributeOverride(
-                    name = "state",
-                    column = @Column(name = "delivery_address_state")
-            ),
-            @AttributeOverride(
-                    name = "zipCode",
-                    column = @Column(name = "delivery_address_zip_code")
-            ),
-            @AttributeOverride(
-                    name = "country",
-                    column = @Column(name = "delivery_address_country")
-            )
+        @AttributeOverride(name = "addressLine1", column = @Column(name = "delivery_address_line1")),
+        @AttributeOverride(name = "addressLine2", column = @Column(name = "delivery_address_line2")),
+        @AttributeOverride(name = "city", column = @Column(name = "delivery_address_city")),
+        @AttributeOverride(name = "state", column = @Column(name = "delivery_address_state")),
+        @AttributeOverride(name = "zipCode", column = @Column(name = "delivery_address_zip_code")),
+        @AttributeOverride(name = "country", column = @Column(name = "delivery_address_country"))
     })
     private Address deliveryAddress;
 

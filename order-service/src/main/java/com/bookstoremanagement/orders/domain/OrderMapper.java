@@ -3,7 +3,6 @@ package com.bookstoremanagement.orders.domain;
 import com.bookstoremanagement.orders.domain.models.CreateOrderRequest;
 import com.bookstoremanagement.orders.domain.models.OrderItem;
 import com.bookstoremanagement.orders.domain.models.OrderStatus;
-
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -29,5 +28,4 @@ class OrderMapper {
         newOrder.setItems(orderItems);
         return newOrder;
     }
-
 }

@@ -3,10 +3,11 @@ package com.bookstoremanagement.orders.domain.models;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-public record OrderCreatedEvent(
+public record OrderCancelledEvent(
         String eventId,
         String orderNumber,
         Set<OrderItem> items,
         Customer customer,
         Address deliveryAddress,
+        String reason,
         LocalDateTime createdAt) {}

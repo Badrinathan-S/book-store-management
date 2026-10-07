@@ -18,6 +18,7 @@
         <maven.comiler.release>${java.version}</maven.comiler.release>
     </properties>
 
+
     <modules>
         <module>catalog-service</module>
         <module>order-service</module>

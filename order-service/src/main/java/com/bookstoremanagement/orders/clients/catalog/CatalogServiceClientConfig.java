@@ -1,13 +1,12 @@
 package com.bookstoremanagement.orders.clients.catalog;
 
 import com.bookstoremanagement.orders.ApplicationProperties;
+import java.time.Duration;
 import org.springframework.boot.http.client.ClientHttpRequestFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.web.client.RestClient;
-
-import java.time.Duration;
 
 @Configuration
 public class CatalogServiceClientConfig {

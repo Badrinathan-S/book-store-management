@@ -1,7 +1,10 @@
 package com.bookstoremanagement.orders.domain;
 
 import com.bookstoremanagement.orders.ApplicationProperties;
+import com.bookstoremanagement.orders.domain.models.OrderCancelledEvent;
 import com.bookstoremanagement.orders.domain.models.OrderCreatedEvent;
+import com.bookstoremanagement.orders.domain.models.OrderDeliveredEvent;
+import com.bookstoremanagement.orders.domain.models.OrderErrorEvent;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 
@@ -21,5 +24,17 @@ public class OrderEventPublisher {
 
     private void send(String routingKey, Object payload) {
         rabbitTemplate.convertAndSend(properties.orderEventsExchange(), routingKey, payload);
+    }
+
+    public void publish(OrderDeliveredEvent orderDeliveredEvent) {
+        this.send(properties.deliveredOrdersQueue(), orderDeliveredEvent);
+    }
+
+    public void publish(OrderCancelledEvent orderCancelledEvent) {
+        this.send(properties.cancelledOrdersQueue(), orderCancelledEvent);
+    }
+
+    public void publish(OrderErrorEvent orderErrorEvent) {
+        this.send(properties.errorOrdersQueue(), orderErrorEvent);
     }
 }
