@@ -53,7 +53,12 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and Publish Docker Image
+        env:
+          DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/bookstore-order-service:latest
         run: |
-          ./mvnw spring-boot:build-image -DskipTests
+          ./mvnw spring-boot:build-image \
+            -DskipTests \
+            -Dspring-boot.build-image.imageName=$DOCKER_IMAGE_NAME
+
           echo "Pushing the image $DOCKER_IMAGE_NAME to Docker Hub..."
           docker push $DOCKER_IMAGE_NAME
