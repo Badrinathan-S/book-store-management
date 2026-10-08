@@ -1,10 +1,8 @@
 package com.bookstoremanagement.orders.domain;
 
-import com.bookstoremanagement.orders.domain.models.CreateOrderRequest;
-import com.bookstoremanagement.orders.domain.models.CreateOrderResponse;
-import com.bookstoremanagement.orders.domain.models.OrderCreatedEvent;
-import com.bookstoremanagement.orders.domain.models.OrderStatus;
+import com.bookstoremanagement.orders.domain.models.*;
 import java.util.List;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -67,5 +65,15 @@ public class OrderService {
     private boolean canBeDelivered(OrderEntity order) {
         return DELIVERY_ALLOWED_COUNTRIES.contains(
                 order.getDeliveryAddress().country().toUpperCase());
+    }
+
+    public List<OrderSummary> findOrders(String userName) {
+        return orderRepository.findByUserName(userName);
+    }
+
+    public Optional<OrderDTO> findUserOrder(String userName, String orderNumber) {
+        return orderRepository
+                .findByUserNameAndOrderNumber(userName, orderNumber)
+                .map(OrderMapper::convertToDTO);
     }
 }
