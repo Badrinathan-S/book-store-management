@@ -25,67 +25,75 @@ public class NotificationService {
     }
 
     public void sendOrderCreatedNotification(OrderCreatedEvent event) {
-        String message = """
+        String message =
+                """
                 ===================================================
                 Order Created Notification
                 ----------------------------------------------------
                 Dear %s,
                 Your order with orderNumber: %s has been created successfully.
-                
+
                 Thanks,
                 BookStore Team
                 ===================================================
-                """.formatted(event.customer().name(), event.orderNumber());
+                """
+                        .formatted(event.customer().name(), event.orderNumber());
         log.info("\n{}", message);
         sendEmail(event.customer().email(), "Order Created Notification", message);
     }
 
     public void sendOrderDeliveredNotification(OrderDeliveredEvent event) {
-        String message = """
+        String message =
+                """
                 ===================================================
                 Order Delivered Notification
                 ----------------------------------------------------
                 Dear %s,
                 Your order with orderNumber: %s has been delivered successfully.
-                
+
                 Thanks,
                 BookStore Team
                 ===================================================
-                """.formatted(event.customer().name(), event.orderNumber());
+                """
+                        .formatted(event.customer().name(), event.orderNumber());
         log.info("\n{}", message);
         sendEmail(event.customer().email(), "Order Delivered Notification", message);
     }
 
     public void sendOrderCancelledNotification(OrderCancelledEvent event) {
-        String message = """
+        String message =
+                """
                 ===================================================
                 Order Cancelled Notification
                 ----------------------------------------------------
                 Dear %s,
                 Your order with orderNumber: %s has been cancelled.
                 Reason: %s
-                
+
                 Thanks,
                 BookStore Team
                 ===================================================
-                """.formatted(event.customer().name(), event.orderNumber(), event.reason());
+                """
+                        .formatted(event.customer().name(), event.orderNumber(), event.reason());
         log.info("\n{}", message);
         sendEmail(event.customer().email(), "Order Cancelled Notification", message);
     }
 
     public void sendOrderErrorEventNotification(OrderErrorEvent event) {
-        String message = """
+        String message =
+                """
                 ===================================================
                 Order Processing Failure Notification
                 ----------------------------------------------------
-                Hi %s,
+                Hi Team,
                 The order processing failed for orderNumber: %s.
                 Reason: %s
-                
+
                 Thanks,
                 BookStore Team
                 ===================================================
-                """.formatted(properties.supportEmail(), event.orderNumber(), event.reason());
+                """
+                        .formatted(event.orderNumber(), event.reason());
         log.info("\n{}", message);
         sendEmail(properties.supportEmail(), "Order Processing Failure Notification", message);
     }

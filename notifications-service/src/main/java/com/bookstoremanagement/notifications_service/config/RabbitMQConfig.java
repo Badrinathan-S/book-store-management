@@ -1,6 +1,6 @@
-package com.bookstoremanagement.orders.config;
+package com.bookstoremanagement.notifications_service.config;
 
-import com.bookstoremanagement.orders.ApplicationProperties;
+import com.bookstoremanagement.notifications_service.ApplicationProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;

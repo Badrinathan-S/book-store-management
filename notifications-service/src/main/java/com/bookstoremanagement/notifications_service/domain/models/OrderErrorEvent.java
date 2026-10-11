@@ -1,4 +1,4 @@
-package com.bookstoremanagement.orders.domain.models;
+package com.bookstoremanagement.notifications_service.domain.models;
 
 public record OrderErrorEvent(
         String eventId,
