@@ -3,7 +3,7 @@ name: Notification service
 on:
   push:
     paths:
-      - 'notification-service/**'
+      - 'notifications-service/**'
     branches:
       - '**'
 
@@ -18,7 +18,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: notification-service
+        working-directory: notifications-service
 
     steps:
       - uses: actions/checkout@v4
