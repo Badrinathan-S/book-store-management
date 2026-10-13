@@ -1,4 +1,4 @@
-package com.bookstoremanagement.orders.domain;
+package com.bookstoremanagement.notifications_service.domain.models;
 
 public enum OrderEventType {
     ORDER_CREATED,
