@@ -10,7 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ConfigurationPropertiesScan
 @EnableScheduling
 @EnableSchedulerLock(defaultLockAtMostFor = "10m")
-public class OrderServiceApplication {
+public class OrderServiceApplication{
 
     public static void main(String[] args) {
         SpringApplication.run(OrderServiceApplication.class, args);
