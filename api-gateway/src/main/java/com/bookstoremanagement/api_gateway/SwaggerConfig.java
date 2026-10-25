@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Set;
 import org.springdoc.core.properties.AbstractSwaggerUiConfigProperties;
 import org.springdoc.core.properties.SwaggerUiConfigProperties;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionLocator;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootConfiguration
+@Configuration
 public class SwaggerConfig {
     private final RouteDefinitionLocator locator;
     private final SwaggerUiConfigProperties swaggerUiConfigProperties;
